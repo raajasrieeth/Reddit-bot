@@ -1,6 +1,5 @@
-import webbrowser
+import imports
 import getstuff
-import requests
 # webbrowser.open('http://thisisraaj.unaux.com/wp-admin/post.php?post=48&action=edit')  # news page in my website.
 
 if __name__ == '__main__':

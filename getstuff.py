@@ -1,4 +1,4 @@
-import praw  # to be pip installed
+import imports
 
 class Getter():
     reddit = praw.Reddit(   # initialize the reddit variable

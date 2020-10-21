@@ -1,5 +1,6 @@
 import imports
 
+
 class Getter():
     reddit = imports.praw.Reddit(   # initialize the reddit variable
         client_id='UctJAJCE-8-nvA',
@@ -13,22 +14,30 @@ class Getter():
 
     def content(self):
         '''Get the content . ie , the posts in the subreddit,
-         followed by the link contained in them , if any. '''
-        for submission in self.reddit.subreddit(self.sb).hot(limit=self.n):
-            print(submission.title)
-            print('=========================')
-            print(submission.selftext)
-            print('*************************')
-            print("URL to the full article: ", submission.url)
-            print('Top comments on this post:')
-            self.comments()
+         followed by the link contained in them , if any.
+         Now , send them to a contents.txt file date wise '''
+        with open('Contents.txt', 'w') as f:
+            f.write("On:")
+            f.write(str(imports.dt.today()))
+            f.write('\n')
+            for submission in self.reddit.subreddit(self.sb).hot(limit=self.n):
+                f.write(submission.title)
+                f.write('\n')
+                f.write('=========================\n')
+                f.write(submission.selftext)
+                f.write('\n')
+                f.write('*************************\n')
+                f.write("URL to the full article:\t ")
+                f.write(submission.url)
 
     def comments(self):
         '''Get the top comments in the subreddit'''
-        for comment in self.reddit.subreddit(self.sb).comments(limit=3):
-            print("++++++++++++++++++++++")
-            print(comment.body) # get the body of the comment
-            print("######################")
+        with open('Contents.txt' , 'w') as f:
+            for comment in self.reddit.subreddit(self.sb).comments(limit=5):
+                f.write("++++++++++++++++++++++\n")
+                f.write(comment.body) # get the body of the comment
+                f.write('\n')
+                f.write("######################")
 
     def main(self):
         '''get the content '''

@@ -1,4 +1,4 @@
 import requests
 import webbrowser
-import praw 
+import praw
 

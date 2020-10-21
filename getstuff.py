@@ -1,7 +1,7 @@
 import imports
 
 class Getter():
-    reddit = praw.Reddit(   # initialize the reddit variable
+    reddit = imports.praw.Reddit(   # initialize the reddit variable
         client_id='UctJAJCE-8-nvA',
         client_secret='1FsIcCXLLrKqxcAU3bRISfzuUrI',
         user_agent = 'my user agent'
@@ -19,11 +19,13 @@ class Getter():
             print('=========================')
             print(submission.selftext)
             print('*************************')
-            print("URL to the full article: " , submission.url)
+            print("URL to the full article: ", submission.url)
+            print('Top comments on this post:')
+            self.comments()
 
     def comments(self):
         '''Get the top comments in the subreddit'''
-        for comment in self.reddit.subreddit(self.sb).comments(limit=5):
+        for comment in self.reddit.subreddit(self.sb).comments(limit=3):
             print("++++++++++++++++++++++")
             print(comment.body) # get the body of the comment
             print("######################")

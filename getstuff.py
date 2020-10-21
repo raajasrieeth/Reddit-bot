@@ -16,11 +16,15 @@ class Getter():
         '''Get the content . ie , the posts in the subreddit,
          followed by the link contained in them , if any.
          Now , send them to a contents.txt file date wise '''
-        with open('Contents.txt', 'w') as f:
+        with open('Contents.txt', 'a') as f:
             f.write("On:")
             f.write(str(imports.dt.today()))
             f.write('\n')
+            i = 1
             for submission in self.reddit.subreddit(self.sb).hot(limit=self.n):
+                f.write(str(i))
+                i += 1
+                f.write("\t")
                 f.write(submission.title)
                 f.write('\n')
                 f.write('=========================\n')
@@ -29,23 +33,23 @@ class Getter():
                 f.write('*************************\n')
                 f.write("URL to the full article:\t ")
                 f.write(submission.url)
+                f.write('\n')
+                f.write("Comments:")
+                f.write(str(self.comments()))
+                f.write('\n')
+                f.write('CCCCCCCCCCCCCCCCCCCCC')
+                f.write('\n')
+
 
     def comments(self):
-        '''Get the top comments in the subreddit'''
-        with open('Contents.txt' , 'w') as f:
-            for comment in self.reddit.subreddit(self.sb).comments(limit=5):
-                f.write("++++++++++++++++++++++\n")
-                f.write(comment.body) # get the body of the comment
-                f.write('\n')
-                f.write("######################")
+        for comment in self.reddit.subreddit(self.sb).comments(limit=1):
+            t = comment.body
+        return t
 
-    def main(self):
-        '''get the content '''
-        print(self.content())
     def doc(self):
         '''Used to get the docstring for a function.'''
         for sub in self.reddit.subreddit(self.sb).hot(limit = 1):
             print(sub.__doc__)
 if __name__ == '__main__':
     get = Getter('news', 5)  # get 5 news bits
-    get.main()
+    get.content()

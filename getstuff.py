@@ -22,6 +22,8 @@ class Getter():
             f.write('\n')
             i = 1
             for submission in self.reddit.subreddit(self.sb).hot(limit=self.n):
+                comment = submission.comments.list()
+                t = comment[0].body
                 f.write(str(i))
                 i += 1
                 f.write("\t")
@@ -35,16 +37,10 @@ class Getter():
                 f.write(submission.url)
                 f.write('\n')
                 f.write("Comments:")
-                f.write(str(self.comments()))
+                f.write(t)
                 f.write('\n')
                 f.write('CCCCCCCCCCCCCCCCCCCCC')
                 f.write('\n')
-
-
-    def comments(self):
-        for comment in self.reddit.subreddit(self.sb).comments(limit=1):
-            t = comment.body
-        return t
 
     def doc(self):
         '''Used to get the docstring for a function.'''

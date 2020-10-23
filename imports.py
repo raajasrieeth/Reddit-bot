@@ -1,4 +1,4 @@
 import requests
-import webbrowser
+import webbrowser as wb
 import praw
 from datetime import date as dt

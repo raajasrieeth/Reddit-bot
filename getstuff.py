@@ -41,11 +41,12 @@ class Getter():
                 f.write('\n')
                 f.write('CCCCCCCCCCCCCCCCCCCCC')
                 f.write('\n')
-
+    def main(self):
+        self.content()
     def doc(self):
         '''Used to get the docstring for a function.'''
         for sub in self.reddit.subreddit(self.sb).hot(limit = 1):
             print(sub.__doc__)
 if __name__ == '__main__':
     get = Getter('news', 5)  # get 5 news bits
-    get.content()
+    get.main()

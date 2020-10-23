@@ -1,7 +1,8 @@
 import imports
 
-
 class Getter():
+    '''Get some stuff from subreddits. Required params:
+    (str): <Subreddit name>, (int): <number of posts>'''
     reddit = imports.praw.Reddit(   # initialize the reddit variable
         client_id='UctJAJCE-8-nvA',
         client_secret='1FsIcCXLLrKqxcAU3bRISfzuUrI',
@@ -41,8 +42,11 @@ class Getter():
                 f.write('\n')
                 f.write('CCCCCCCCCCCCCCCCCCCCC')
                 f.write('\n')
+
     def main(self):
+        '''Calls all needed methods.'''
         self.content()
+
     def doc(self):
         '''Used to get the docstring for a function.'''
         for sub in self.reddit.subreddit(self.sb).hot(limit = 1):

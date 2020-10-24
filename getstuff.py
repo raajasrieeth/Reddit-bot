@@ -17,7 +17,7 @@ class Getter():
         '''Get the content . ie , the posts in the subreddit,
          followed by the link contained in them , if any.
          Now , send them to a contents.txt file date wise '''
-        with open('Contents.txt', 'a') as f:
+        with open('Contents.txt', 'a') as f :
             f.write("On:")
             f.write(str(imports.dt.today()))
             f.write('\n')
